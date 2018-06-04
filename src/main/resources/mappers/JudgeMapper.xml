@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sweep.dao.JudgeMapper">
+  <sql id="Base_Column_List">
+    judgeid, judgename, judgeemail, matchnum, judgeage,judgesex,judgetype,judgeimage
+  </sql>
+
+  <select id="getAllJudge" resultType="com.sweep.pojo.Judge">
+    SELECT <include refid="Base_Column_List"></include>
+    FROM judge
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Judge">
+  update judge
+  <set>
+  <if test="judgename != null">
+    judgename = #{judgename,jdbcType=VARCHAR},
+  </if>
+  <if test="judgeemail != null">
+    judgeemail = #{judgeemail,jdbcType=VARCHAR},
+  </if>
+  <if test="judgesex != null">
+  judgesex = #{judgesex,jdbcType=VARCHAR},
+  </if>
+  <if test="judgeage != null">
+  judgeage = #{judgeage,jdbcType=INTEGER},
+  </if>
+    <if test="matchnum != null">
+      matchnum = #{matchnum,jdbcType=INTEGER},
+    </if>
+  <if test="judgetype != null">
+    judgetype = #{judgetype,jdbcType=VARCHAR},
+  </if>
+  <if test="judgeimage != null">
+    judgeimage = #{judgeimage,jdbcType=VARCHAR},
+  </if>
+  </set>
+  where judgeid = #{judgeid,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from judge
+    where judgeid = #{judgeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="addJudge" parameterType="com.sweep.pojo.Judge">
+    INSERT INTO judge  (judgename,judgeemail,judgeage,judgesex,judgeimage,judgetype)
+    values ( #{judgename,jdbcType=VARCHAR}, #{judgeemail,jdbcType=VARCHAR}, #{judgeage,jdbcType=INTEGER}
+    , #{judgesex,jdbcType=VARCHAR}, #{judgeimage,jdbcType=VARCHAR}, #{judgetype,jdbcType=VARCHAR}
+      )
+  </insert>
+</mapper>

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?> <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sweep.dao.UserMapper">
+  <!--<resultMap id="BaseResultMap" type="com.sweep.pojo.User">-->
+    <!--<constructor>-->
+      <!--<idArg column="userid" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="sex" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="age" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="credit" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="realname" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="userimage" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--</constructor>-->
+  <!--</resultMap>-->
+  <!--<sql id="Base_Column_List">-->
+    <!--userid, username, password, sex, age, email, phone, create_time, credit, realname, -->
+    <!--userimage-->
+  <!--</sql>-->
+  <!--<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+    <!--select -->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from match_user-->
+    <!--where userid = #{userid,jdbcType=INTEGER}-->
+  <!--</select>-->
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+    <!--delete from match_user-->
+    <!--where userid = #{userid,jdbcType=INTEGER}-->
+  <!--</delete>-->
+  <!--<insert id="insert" parameterType="com.sweep.pojo.User">-->
+    <!--insert into match_user (userid, username, password, -->
+      <!--sex, age, email, phone, -->
+      <!--create_time, credit, realname, -->
+      <!--userimage)-->
+    <!--values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, -->
+      <!--#{sex,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, -->
+      <!--#{createTime,jdbcType=VARCHAR}, #{credit,jdbcType=INTEGER}, #{realname,jdbcType=VARCHAR}, -->
+      <!--#{userimage,jdbcType=VARCHAR})-->
+  <!--</insert>-->
+  <!--<insert id="insertSelective" parameterType="com.sweep.pojo.User">-->
+    <!--insert into match_user-->
+    <!--<trim prefix="(" suffix=")" suffixOverrides=",">-->
+      <!--<if test="userid != null">-->
+        <!--userid,-->
+      <!--</if>-->
+      <!--<if test="username != null">-->
+        <!--username,-->
+      <!--</if>-->
+      <!--<if test="password != null">-->
+        <!--password,-->
+      <!--</if>-->
+      <!--<if test="sex != null">-->
+        <!--sex,-->
+      <!--</if>-->
+      <!--<if test="age != null">-->
+        <!--age,-->
+      <!--</if>-->
+      <!--<if test="email != null">-->
+        <!--email,-->
+      <!--</if>-->
+      <!--<if test="phone != null">-->
+        <!--phone,-->
+      <!--</if>-->
+      <!--<if test="createTime != null">-->
+        <!--create_time,-->
+      <!--</if>-->
+      <!--<if test="credit != null">-->
+        <!--credit,-->
+      <!--</if>-->
+      <!--<if test="realname != null">-->
+        <!--realname,-->
+      <!--</if>-->
+      <!--<if test="userimage != null">-->
+        <!--userimage,-->
+      <!--</if>-->
+    <!--</trim>-->
+    <!--<trim prefix="values (" suffix=")" suffixOverrides=",">-->
+      <!--<if test="userid != null">-->
+        <!--#{userid,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="username != null">-->
+        <!--#{username,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="password != null">-->
+        <!--#{password,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="sex != null">-->
+        <!--#{sex,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="age != null">-->
+        <!--#{age,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="email != null">-->
+        <!--#{email,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="phone != null">-->
+        <!--#{phone,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="createTime != null">-->
+        <!--#{createTime,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="credit != null">-->
+        <!--#{credit,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="realname != null">-->
+        <!--#{realname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="userimage != null">-->
+        <!--#{userimage,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</trim>-->
+  <!--</insert>-->
+  <!--<update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.User">-->
+    <!--update match_user-->
+    <!--<set>-->
+      <!--<if test="username != null">-->
+        <!--username = #{username,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="password != null">-->
+        <!--password = #{password,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="sex != null">-->
+        <!--sex = #{sex,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="age != null">-->
+        <!--age = #{age,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="email != null">-->
+        <!--email = #{email,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="phone != null">-->
+        <!--phone = #{phone,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="createTime != null">-->
+        <!--create_time = #{createTime,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="credit != null">-->
+        <!--credit = #{credit,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="realname != null">-->
+        <!--realname = #{realname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="userimage != null">-->
+        <!--userimage = #{userimage,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--where userid = #{userid,jdbcType=INTEGER}-->
+  <!--</update>-->
+  <!--<update id="updateByPrimaryKey" parameterType="com.sweep.pojo.User">-->
+    <!--update match_user-->
+    <!--set username = #{username,jdbcType=VARCHAR},-->
+      <!--password = #{password,jdbcType=VARCHAR},-->
+      <!--sex = #{sex,jdbcType=VARCHAR},-->
+      <!--age = #{age,jdbcType=INTEGER},-->
+      <!--email = #{email,jdbcType=VARCHAR},-->
+      <!--phone = #{phone,jdbcType=VARCHAR},-->
+      <!--create_time = #{createTime,jdbcType=VARCHAR},-->
+      <!--credit = #{credit,jdbcType=INTEGER},-->
+      <!--realname = #{realname,jdbcType=VARCHAR},-->
+      <!--userimage = #{userimage,jdbcType=VARCHAR}-->
+    <!--where userid = #{userid,jdbcType=INTEGER}-->
+  <!--</update>-->
+  <!--<resultMap id="BaseResultMap" type="com.sweep.pojo.User">-->
+    <!--<constructor>-->
+      <!--<idArg column="userid" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="sex" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="age" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="credit" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="realname" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="userimage" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--</constructor>-->
+  <!--</resultMap>-->
+  <sql id="Base_Column_List">
+    userid, username, password, sex, age, email, phone, create_time,
+    credit, realname, userimage
+  </sql>
+  <!--<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+    <!--select -->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from match_user-->
+    <!--where userid = #{userid,jdbcType=INTEGER}-->
+  <!--</select>-->
+  <select id="selectByName" parameterType="java.lang.String" resultType="com.sweep.pojo.User">
+    SELECT <include refid="Base_Column_List"></include>
+    FROM match_user WHERE username=#{name}
+  </select>
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+    <!--delete from match_user-->
+    <!--where userid = #{userid,jdbcType=INTEGER}-->
+  <!--</delete>-->
+  <!--<insert id="insert" parameterType="com.sweep.pojo.User">-->
+    <!--insert into match_user (userid, username, password, -->
+      <!--sex, age, email, phone, -->
+      <!--question, answer, create_time, -->
+      <!--credit, realname, userimage-->
+      <!--)-->
+    <!--values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, -->
+      <!--#{sex,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, -->
+      <!--#{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, -->
+      <!--#{credit,jdbcType=INTEGER}, #{realname,jdbcType=VARCHAR}, #{userimage,jdbcType=VARCHAR}-->
+      <!--)-->
+  <!--</insert>-->
+  <!--<insert id="insertSelective" parameterType="com.sweep.pojo.User">-->
+    <!--insert into match_user-->
+    <!--<trim prefix="(" suffix=")" suffixOverrides=",">-->
+      <!--<if test="userid != null">-->
+        <!--userid,-->
+      <!--</if>-->
+      <!--<if test="username != null">-->
+        <!--username,-->
+      <!--</if>-->
+      <!--<if test="password != null">-->
+        <!--password,-->
+      <!--</if>-->
+      <!--<if test="sex != null">-->
+        <!--sex,-->
+      <!--</if>-->
+      <!--<if test="age != null">-->
+        <!--age,-->
+      <!--</if>-->
+      <!--<if test="email != null">-->
+        <!--email,-->
+      <!--</if>-->
+      <!--<if test="phone != null">-->
+        <!--phone,-->
+      <!--</if>-->
+      <!--<if test="question != null">-->
+        <!--question,-->
+      <!--</if>-->
+      <!--<if test="answer != null">-->
+        <!--answer,-->
+      <!--</if>-->
+      <!--<if test="createTime != null">-->
+        <!--create_time,-->
+      <!--</if>-->
+      <!--<if test="credit != null">-->
+        <!--credit,-->
+      <!--</if>-->
+      <!--<if test="realname != null">-->
+        <!--realname,-->
+      <!--</if>-->
+      <!--<if test="userimage != null">-->
+        <!--userimage,-->
+      <!--</if>-->
+    <!--</trim>-->
+    <!--<trim prefix="values (" suffix=")" suffixOverrides=",">-->
+      <!--<if test="userid != null">-->
+        <!--#{userid,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="username != null">-->
+        <!--#{username,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="password != null">-->
+        <!--#{password,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="sex != null">-->
+        <!--#{sex,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="age != null">-->
+        <!--#{age,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="email != null">-->
+        <!--#{email,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="phone != null">-->
+        <!--#{phone,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="question != null">-->
+        <!--#{question,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="answer != null">-->
+        <!--#{answer,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="createTime != null">-->
+        <!--#{createTime,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="credit != null">-->
+        <!--#{credit,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="realname != null">-->
+        <!--#{realname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="userimage != null">-->
+        <!--#{userimage,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</trim>-->
+  <!--</insert>-->
+  <!--<update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.User">-->
+    <!--update match_user-->
+    <!--<set>-->
+      <!--<if test="username != null">-->
+        <!--username = #{username,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="password != null">-->
+        <!--password = #{password,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="sex != null">-->
+        <!--sex = #{sex,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="age != null">-->
+        <!--age = #{age,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="email != null">-->
+        <!--email = #{email,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="phone != null">-->
+        <!--phone = #{phone,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="question != null">-->
+        <!--question = #{question,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="answer != null">-->
+        <!--answer = #{answer,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="createTime != null">-->
+        <!--create_time = #{createTime,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="credit != null">-->
+        <!--credit = #{credit,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="realname != null">-->
+        <!--realname = #{realname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="userimage != null">-->
+        <!--userimage = #{userimage,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--where userid = #{userid,jdbcType=INTEGER}-->
+  <!--</update>-->
+  <!--<update id="updateByPrimaryKey" parameterType="com.sweep.pojo.User">-->
+    <!--update match_user-->
+    <!--set username = #{username,jdbcType=VARCHAR},-->
+      <!--password = #{password,jdbcType=VARCHAR},-->
+      <!--sex = #{sex,jdbcType=VARCHAR},-->
+      <!--age = #{age,jdbcType=INTEGER},-->
+      <!--email = #{email,jdbcType=VARCHAR},-->
+      <!--phone = #{phone,jdbcType=VARCHAR},-->
+      <!--question = #{question,jdbcType=VARCHAR},-->
+      <!--answer = #{answer,jdbcType=VARCHAR},-->
+      <!--create_time = #{createTime,jdbcType=VARCHAR},-->
+      <!--credit = #{credit,jdbcType=INTEGER},-->
+      <!--realname = #{realname,jdbcType=VARCHAR},-->
+      <!--userimage = #{userimage,jdbcType=VARCHAR}-->
+    <!--where userid = #{userid,jdbcType=INTEGER}-->
+  <!--</update>-->
+</mapper>

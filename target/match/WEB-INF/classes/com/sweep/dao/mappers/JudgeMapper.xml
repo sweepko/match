@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sweep.dao.JudgeMapper">
+  <resultMap id="BaseResultMap" type="com.sweep.pojo.Judge">
+    <constructor>
+      <idArg column="judgeid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="judgename" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="judgeemail" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="startdate" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="enddate" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="matchname" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    judgeid, judgename, judgeemail, startdate, enddate, matchname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from judge
+    where judgeid = #{judgeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from judge
+    where judgeid = #{judgeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sweep.pojo.Judge">
+    insert into judge (judgeid, judgename, judgeemail, 
+      startdate, enddate, matchname
+      )
+    values (#{judgeid,jdbcType=INTEGER}, #{judgename,jdbcType=VARCHAR}, #{judgeemail,jdbcType=VARCHAR}, 
+      #{startdate,jdbcType=VARCHAR}, #{enddate,jdbcType=VARCHAR}, #{matchname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sweep.pojo.Judge">
+    insert into judge
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="judgeid != null">
+        judgeid,
+      </if>
+      <if test="judgename != null">
+        judgename,
+      </if>
+      <if test="judgeemail != null">
+        judgeemail,
+      </if>
+      <if test="startdate != null">
+        startdate,
+      </if>
+      <if test="enddate != null">
+        enddate,
+      </if>
+      <if test="matchname != null">
+        matchname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="judgeid != null">
+        #{judgeid,jdbcType=INTEGER},
+      </if>
+      <if test="judgename != null">
+        #{judgename,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeemail != null">
+        #{judgeemail,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        #{startdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null">
+        #{enddate,jdbcType=VARCHAR},
+      </if>
+      <if test="matchname != null">
+        #{matchname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Judge">
+    update judge
+    <set>
+      <if test="judgename != null">
+        judgename = #{judgename,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeemail != null">
+        judgeemail = #{judgeemail,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        startdate = #{startdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null">
+        enddate = #{enddate,jdbcType=VARCHAR},
+      </if>
+      <if test="matchname != null">
+        matchname = #{matchname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where judgeid = #{judgeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Judge">
+    update judge
+    set judgename = #{judgename,jdbcType=VARCHAR},
+      judgeemail = #{judgeemail,jdbcType=VARCHAR},
+      startdate = #{startdate,jdbcType=VARCHAR},
+      enddate = #{enddate,jdbcType=VARCHAR},
+      matchname = #{matchname,jdbcType=VARCHAR}
+    where judgeid = #{judgeid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.sweep.pojo.Judge">
+    <constructor>
+      <idArg column="judgeid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="judgename" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="judgeemail" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="startdate" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="enddate" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="matchname" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    judgeid, judgename, judgeemail, startdate, enddate, matchname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from judge
+    where judgeid = #{judgeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from judge
+    where judgeid = #{judgeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sweep.pojo.Judge">
+    insert into judge (judgeid, judgename, judgeemail, 
+      startdate, enddate, matchname
+      )
+    values (#{judgeid,jdbcType=INTEGER}, #{judgename,jdbcType=VARCHAR}, #{judgeemail,jdbcType=VARCHAR}, 
+      #{startdate,jdbcType=VARCHAR}, #{enddate,jdbcType=VARCHAR}, #{matchname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sweep.pojo.Judge">
+    insert into judge
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="judgeid != null">
+        judgeid,
+      </if>
+      <if test="judgename != null">
+        judgename,
+      </if>
+      <if test="judgeemail != null">
+        judgeemail,
+      </if>
+      <if test="startdate != null">
+        startdate,
+      </if>
+      <if test="enddate != null">
+        enddate,
+      </if>
+      <if test="matchname != null">
+        matchname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="judgeid != null">
+        #{judgeid,jdbcType=INTEGER},
+      </if>
+      <if test="judgename != null">
+        #{judgename,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeemail != null">
+        #{judgeemail,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        #{startdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null">
+        #{enddate,jdbcType=VARCHAR},
+      </if>
+      <if test="matchname != null">
+        #{matchname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Judge">
+    update judge
+    <set>
+      <if test="judgename != null">
+        judgename = #{judgename,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeemail != null">
+        judgeemail = #{judgeemail,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        startdate = #{startdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null">
+        enddate = #{enddate,jdbcType=VARCHAR},
+      </if>
+      <if test="matchname != null">
+        matchname = #{matchname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where judgeid = #{judgeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Judge">
+    update judge
+    set judgename = #{judgename,jdbcType=VARCHAR},
+      judgeemail = #{judgeemail,jdbcType=VARCHAR},
+      startdate = #{startdate,jdbcType=VARCHAR},
+      enddate = #{enddate,jdbcType=VARCHAR},
+      matchname = #{matchname,jdbcType=VARCHAR}
+    where judgeid = #{judgeid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sweep.dao.CorpsMapper">
+  <resultMap id="BaseResultMap" type="com.sweep.pojo.Corps">
+    <constructor>
+      <idArg column="corps_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="corps_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="corps_persons" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="corps_introduce" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="corps_image" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="matchid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="score" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="describe" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    corps_id, corps_name, corps_persons, corps_introduce, corps_image, matchid, score, 
+    describe
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from corps
+    where corps_id = #{corpsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from corps
+    where corps_id = #{corpsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sweep.pojo.Corps">
+    insert into corps (corps_id, corps_name, corps_persons, 
+      corps_introduce, corps_image, matchid, 
+      score, describe)
+    values (#{corpsId,jdbcType=INTEGER}, #{corpsName,jdbcType=VARCHAR}, #{corpsPersons,jdbcType=VARCHAR}, 
+      #{corpsIntroduce,jdbcType=VARCHAR}, #{corpsImage,jdbcType=VARCHAR}, #{matchid,jdbcType=INTEGER}, 
+      #{score,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sweep.pojo.Corps">
+    insert into corps
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="corpsId != null">
+        corps_id,
+      </if>
+      <if test="corpsName != null">
+        corps_name,
+      </if>
+      <if test="corpsPersons != null">
+        corps_persons,
+      </if>
+      <if test="corpsIntroduce != null">
+        corps_introduce,
+      </if>
+      <if test="corpsImage != null">
+        corps_image,
+      </if>
+      <if test="matchid != null">
+        matchid,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="describe != null">
+        describe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="corpsId != null">
+        #{corpsId,jdbcType=INTEGER},
+      </if>
+      <if test="corpsName != null">
+        #{corpsName,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsPersons != null">
+        #{corpsPersons,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsIntroduce != null">
+        #{corpsIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsImage != null">
+        #{corpsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="matchid != null">
+        #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        #{describe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Corps">
+    update corps
+    <set>
+      <if test="corpsName != null">
+        corps_name = #{corpsName,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsPersons != null">
+        corps_persons = #{corpsPersons,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsIntroduce != null">
+        corps_introduce = #{corpsIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsImage != null">
+        corps_image = #{corpsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="matchid != null">
+        matchid = #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where corps_id = #{corpsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Corps">
+    update corps
+    set corps_name = #{corpsName,jdbcType=VARCHAR},
+      corps_persons = #{corpsPersons,jdbcType=VARCHAR},
+      corps_introduce = #{corpsIntroduce,jdbcType=VARCHAR},
+      corps_image = #{corpsImage,jdbcType=VARCHAR},
+      matchid = #{matchid,jdbcType=INTEGER},
+      score = #{score,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR}
+    where corps_id = #{corpsId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.sweep.pojo.Corps">
+    <constructor>
+      <idArg column="corps_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="corps_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="corps_persons" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="corps_introduce" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="corps_image" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="matchid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="score" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="describe" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    corps_id, corps_name, corps_persons, corps_introduce, corps_image, matchid, score, 
+    describe
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from corps
+    where corps_id = #{corpsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from corps
+    where corps_id = #{corpsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sweep.pojo.Corps">
+    insert into corps (corps_id, corps_name, corps_persons, 
+      corps_introduce, corps_image, matchid, 
+      score, describe)
+    values (#{corpsId,jdbcType=INTEGER}, #{corpsName,jdbcType=VARCHAR}, #{corpsPersons,jdbcType=VARCHAR}, 
+      #{corpsIntroduce,jdbcType=VARCHAR}, #{corpsImage,jdbcType=VARCHAR}, #{matchid,jdbcType=INTEGER}, 
+      #{score,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sweep.pojo.Corps">
+    insert into corps
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="corpsId != null">
+        corps_id,
+      </if>
+      <if test="corpsName != null">
+        corps_name,
+      </if>
+      <if test="corpsPersons != null">
+        corps_persons,
+      </if>
+      <if test="corpsIntroduce != null">
+        corps_introduce,
+      </if>
+      <if test="corpsImage != null">
+        corps_image,
+      </if>
+      <if test="matchid != null">
+        matchid,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="describe != null">
+        describe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="corpsId != null">
+        #{corpsId,jdbcType=INTEGER},
+      </if>
+      <if test="corpsName != null">
+        #{corpsName,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsPersons != null">
+        #{corpsPersons,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsIntroduce != null">
+        #{corpsIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsImage != null">
+        #{corpsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="matchid != null">
+        #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        #{describe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Corps">
+    update corps
+    <set>
+      <if test="corpsName != null">
+        corps_name = #{corpsName,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsPersons != null">
+        corps_persons = #{corpsPersons,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsIntroduce != null">
+        corps_introduce = #{corpsIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="corpsImage != null">
+        corps_image = #{corpsImage,jdbcType=VARCHAR},
+      </if>
+      <if test="matchid != null">
+        matchid = #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where corps_id = #{corpsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Corps">
+    update corps
+    set corps_name = #{corpsName,jdbcType=VARCHAR},
+      corps_persons = #{corpsPersons,jdbcType=VARCHAR},
+      corps_introduce = #{corpsIntroduce,jdbcType=VARCHAR},
+      corps_image = #{corpsImage,jdbcType=VARCHAR},
+      matchid = #{matchid,jdbcType=INTEGER},
+      score = #{score,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR}
+    where corps_id = #{corpsId,jdbcType=INTEGER}
+  </update>
+</mapper>

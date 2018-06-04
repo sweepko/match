@@ -28,13 +28,17 @@ public class NoticeController {
     @Autowired
     private NoticeService noticeService;
     @RequestMapping("/addNotice")
-    public void addNotice(Notice notice, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException {
+    @ResponseBody
+    public ServerResponse addNotice(Notice notice, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException {
         Admin nowUser = (Admin) session.getAttribute("nowUser");
         notice.setNoticeperson(nowUser.getAdminUsername());
         notice.setNoticedate(TimeUtil.getCurrentTime());
         boolean isSuccess=noticeService.insertNotice(notice);
         if (isSuccess){
-            response.sendRedirect(request.getContextPath()+"/frames/admin/looknotice.jsp");
+            return ServerResponse.createBySuccessMessage("通告发布成功！");
+        }
+        else {
+            return ServerResponse.createByErrorMessage("通告发布失败！");
         }
     }
 
@@ -69,13 +73,21 @@ public class NoticeController {
         return "pages/admin/changenotice";
     }
     @RequestMapping("/updateNotice")
-    public String updateNotice(Notice notice){
+    @ResponseBody
+    public ServerResponse updateNotice(Notice notice){
         notice.setNoticedate(TimeUtil.getCurrentTime());
         boolean isSuccess=noticeService.updateNotice(notice);
         if (isSuccess){
-            return "redirect:/frames/admin/looknotice.jsp";
+            return ServerResponse.createBySuccessMessage("通告修改成功！");
         }else{
-            return "redirect:/first/error.jsp";
+           return ServerResponse.createByErrorMessage("通告修改失败！");
         }
     }
+    @RequestMapping("/getNotice")
+    public String getNotice(Model model){
+        List<Notice> notices=noticeService.getAllNotice();
+        model.addAttribute("notices",notices);
+        return "pages/user/looknotice";
+    }
+
 }

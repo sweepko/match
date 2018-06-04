@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sweep.dao.AdminMapper">
+  <!--<resultMap id="BaseResultMap" type="com.sweep.pojo.Admin">-->
+    <!--<constructor>-->
+      <!--<idArg column="admin_id" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="admin_username" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="admin_password" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--</constructor>-->
+  <!--</resultMap>-->
+  <sql id="Base_Column_List">
+    admin_id, adminusername, adminpassword
+  </sql>
+  <!--<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+    <!--select -->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from match_admin-->
+    <!--where admin_id = #{adminId,jdbcType=INTEGER}-->
+  <!--</select>-->
+  <select id="selectAdminByNameAndPass" resultType="com.sweep.pojo.Admin">
+    SELECT <include refid="Base_Column_List"></include>
+    FROM match_admin WHERE adminusername=#{username} AND adminpassword=#{password}
+  </select>
+  <select id="getAdmins" resultType="com.sweep.pojo.Admin">
+    SELECT <include refid="Base_Column_List"></include>
+    FROM match_admin
+  </select>
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+    <!--delete from match_admin-->
+    <!--where admin_id = #{adminId,jdbcType=INTEGER}-->
+  <!--</delete>-->
+  <insert id="insert" parameterType="com.sweep.pojo.Admin">
+    insert into match_admin (adminusername, adminpassword
+      ) values ( #{adminUsername,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR}
+      )
+  </insert>
+  <!--<insert id="insertSelective" parameterType="com.sweep.pojo.Admin">-->
+    <!--insert into match_admin-->
+    <!--<trim prefix="(" suffix=")" suffixOverrides=",">-->
+      <!--<if test="adminId != null">-->
+        <!--admin_id,-->
+      <!--</if>-->
+      <!--<if test="adminUsername != null">-->
+        <!--admin_username,-->
+      <!--</if>-->
+      <!--<if test="adminPassword != null">-->
+        <!--admin_password,-->
+      <!--</if>-->
+    <!--</trim>-->
+    <!--<trim prefix="values (" suffix=")" suffixOverrides=",">-->
+      <!--<if test="adminId != null">-->
+        <!--#{adminId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="adminUsername != null">-->
+        <!--#{adminUsername,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="adminPassword != null">-->
+        <!--#{adminPassword,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</trim>-->
+  <!--</insert>-->
+  <!--<update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Admin">-->
+    <!--update match_admin-->
+    <!--<set>-->
+      <!--<if test="adminUsername != null">-->
+        <!--admin_username = #{adminUsername,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="adminPassword != null">-->
+        <!--admin_password = #{adminPassword,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--where admin_id = #{adminId,jdbcType=INTEGER}-->
+  <!--</update>-->
+  <!--<update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Admin">-->
+    <!--update match_admin-->
+    <!--set admin_username = #{adminUsername,jdbcType=VARCHAR},-->
+      <!--admin_password = #{adminPassword,jdbcType=VARCHAR}-->
+    <!--where admin_id = #{adminId,jdbcType=INTEGER}-->
+  <!--</update>-->
+  <!--<resultMap id="BaseResultMap" type="com.sweep.pojo.Admin">-->
+    <!--<constructor>-->
+      <!--<idArg column="admin_id" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="admin_username" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="admin_password" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--</constructor>-->
+  <!--</resultMap>-->
+  <!--<sql id="Base_Column_List">-->
+    <!--admin_id, admin_username, admin_password-->
+  <!--</sql>-->
+  <!--<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+    <!--select -->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from match_admin-->
+    <!--where admin_id = #{adminId,jdbcType=INTEGER}-->
+  <!--</select>-->
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+    <!--delete from match_admin-->
+    <!--where admin_id = #{adminId,jdbcType=INTEGER}-->
+  <!--</delete>-->
+  <!--<insert id="insert" parameterType="com.sweep.pojo.Admin">-->
+    <!--insert into match_admin (admin_id, admin_username, admin_password-->
+      <!--)-->
+    <!--values (#{adminId,jdbcType=INTEGER}, #{adminUsername,jdbcType=VARCHAR}, #{adminPassword,jdbcType=VARCHAR}-->
+      <!--)-->
+  <!--</insert>-->
+  <!--<insert id="insertSelective" parameterType="com.sweep.pojo.Admin">-->
+    <!--insert into match_admin-->
+    <!--<trim prefix="(" suffix=")" suffixOverrides=",">-->
+      <!--<if test="adminId != null">-->
+        <!--admin_id,-->
+      <!--</if>-->
+      <!--<if test="adminUsername != null">-->
+        <!--admin_username,-->
+      <!--</if>-->
+      <!--<if test="adminPassword != null">-->
+        <!--admin_password,-->
+      <!--</if>-->
+    <!--</trim>-->
+    <!--<trim prefix="values (" suffix=")" suffixOverrides=",">-->
+      <!--<if test="adminId != null">-->
+        <!--#{adminId,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="adminUsername != null">-->
+        <!--#{adminUsername,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="adminPassword != null">-->
+        <!--#{adminPassword,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</trim>-->
+  <!--</insert>-->
+  <!--<update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Admin">-->
+    <!--update match_admin-->
+    <!--<set>-->
+      <!--<if test="adminUsername != null">-->
+        <!--admin_username = #{adminUsername,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="adminPassword != null">-->
+        <!--admin_password = #{adminPassword,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--where admin_id = #{adminId,jdbcType=INTEGER}-->
+  <!--</update>-->
+  <!--<update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Admin">-->
+    <!--update match_admin-->
+    <!--set admin_username = #{adminUsername,jdbcType=VARCHAR},-->
+      <!--admin_password = #{adminPassword,jdbcType=VARCHAR}-->
+    <!--where admin_id = #{adminId,jdbcType=INTEGER}-->
+  <!--</update>-->
+</mapper>

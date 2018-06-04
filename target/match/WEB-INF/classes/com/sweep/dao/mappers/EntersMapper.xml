@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sweep.dao.EntersMapper">
+  <resultMap id="BaseResultMap" type="com.sweep.pojo.Enters">
+    <constructor>
+      <idArg column="entersid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="userid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="matchid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="score" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="describe" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    entersid, userid, matchid, score, describe
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from match_enters
+    where entersid = #{entersid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from match_enters
+    where entersid = #{entersid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sweep.pojo.Enters">
+    insert into match_enters (entersid, userid, matchid, 
+      score, describe)
+    values (#{entersid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{matchid,jdbcType=INTEGER}, 
+      #{score,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sweep.pojo.Enters">
+    insert into match_enters
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="entersid != null">
+        entersid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="matchid != null">
+        matchid,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="describe != null">
+        describe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="entersid != null">
+        #{entersid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="matchid != null">
+        #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        #{describe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Enters">
+    update match_enters
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="matchid != null">
+        matchid = #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where entersid = #{entersid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Enters">
+    update match_enters
+    set userid = #{userid,jdbcType=INTEGER},
+      matchid = #{matchid,jdbcType=INTEGER},
+      score = #{score,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR}
+    where entersid = #{entersid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.sweep.pojo.Enters">
+    <constructor>
+      <idArg column="entersid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="userid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="matchid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="score" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="describe" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    entersid, userid, matchid, score, describe
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from match_enters
+    where entersid = #{entersid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from match_enters
+    where entersid = #{entersid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sweep.pojo.Enters">
+    insert into match_enters (entersid, userid, matchid, 
+      score, describe)
+    values (#{entersid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{matchid,jdbcType=INTEGER}, 
+      #{score,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sweep.pojo.Enters">
+    insert into match_enters
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="entersid != null">
+        entersid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="matchid != null">
+        matchid,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="describe != null">
+        describe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="entersid != null">
+        #{entersid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="matchid != null">
+        #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        #{describe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Enters">
+    update match_enters
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="matchid != null">
+        matchid = #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="describe != null">
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where entersid = #{entersid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Enters">
+    update match_enters
+    set userid = #{userid,jdbcType=INTEGER},
+      matchid = #{matchid,jdbcType=INTEGER},
+      score = #{score,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR}
+    where entersid = #{entersid,jdbcType=INTEGER}
+  </update>
+</mapper>

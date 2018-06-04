@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sweep.dao.NoticeMapper">
+  <resultMap id="BaseResultMap" type="com.sweep.pojo.Notice">
+    <constructor>
+      <idArg column="noticeid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="noticetitle" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="noticecontent" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="noticedate" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    noticeid, noticetitle, noticecontent, noticedate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from notice
+    where noticeid = #{noticeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from notice
+    where noticeid = #{noticeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sweep.pojo.Notice">
+    insert into notice (noticeid, noticetitle, noticecontent, 
+      noticedate)
+    values (#{noticeid,jdbcType=INTEGER}, #{noticetitle,jdbcType=VARCHAR}, #{noticecontent,jdbcType=VARCHAR}, 
+      #{noticedate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sweep.pojo.Notice">
+    insert into notice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="noticeid != null">
+        noticeid,
+      </if>
+      <if test="noticetitle != null">
+        noticetitle,
+      </if>
+      <if test="noticecontent != null">
+        noticecontent,
+      </if>
+      <if test="noticedate != null">
+        noticedate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="noticeid != null">
+        #{noticeid,jdbcType=INTEGER},
+      </if>
+      <if test="noticetitle != null">
+        #{noticetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noticecontent != null">
+        #{noticecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="noticedate != null">
+        #{noticedate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Notice">
+    update notice
+    <set>
+      <if test="noticetitle != null">
+        noticetitle = #{noticetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noticecontent != null">
+        noticecontent = #{noticecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="noticedate != null">
+        noticedate = #{noticedate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where noticeid = #{noticeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Notice">
+    update notice
+    set noticetitle = #{noticetitle,jdbcType=VARCHAR},
+      noticecontent = #{noticecontent,jdbcType=VARCHAR},
+      noticedate = #{noticedate,jdbcType=VARCHAR}
+    where noticeid = #{noticeid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.sweep.pojo.Notice">
+    <constructor>
+      <idArg column="noticeid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="noticetitle" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="noticecontent" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="noticedate" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    noticeid, noticetitle, noticecontent, noticedate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from notice
+    where noticeid = #{noticeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from notice
+    where noticeid = #{noticeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sweep.pojo.Notice">
+    insert into notice (noticeid, noticetitle, noticecontent, 
+      noticedate)
+    values (#{noticeid,jdbcType=INTEGER}, #{noticetitle,jdbcType=VARCHAR}, #{noticecontent,jdbcType=VARCHAR}, 
+      #{noticedate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sweep.pojo.Notice">
+    insert into notice
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="noticeid != null">
+        noticeid,
+      </if>
+      <if test="noticetitle != null">
+        noticetitle,
+      </if>
+      <if test="noticecontent != null">
+        noticecontent,
+      </if>
+      <if test="noticedate != null">
+        noticedate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="noticeid != null">
+        #{noticeid,jdbcType=INTEGER},
+      </if>
+      <if test="noticetitle != null">
+        #{noticetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noticecontent != null">
+        #{noticecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="noticedate != null">
+        #{noticedate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Notice">
+    update notice
+    <set>
+      <if test="noticetitle != null">
+        noticetitle = #{noticetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noticecontent != null">
+        noticecontent = #{noticecontent,jdbcType=VARCHAR},
+      </if>
+      <if test="noticedate != null">
+        noticedate = #{noticedate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where noticeid = #{noticeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Notice">
+    update notice
+    set noticetitle = #{noticetitle,jdbcType=VARCHAR},
+      noticecontent = #{noticecontent,jdbcType=VARCHAR},
+      noticedate = #{noticedate,jdbcType=VARCHAR}
+    where noticeid = #{noticeid,jdbcType=INTEGER}
+  </update>
+</mapper>

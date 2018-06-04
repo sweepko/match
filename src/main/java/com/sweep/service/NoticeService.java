@@ -10,4 +10,6 @@ public interface NoticeService {
     public int deleteNotices(String ids);
     public Notice selectNoticeById(int noticeid);
     public boolean updateNotice(Notice notice);
+
+    List<Notice> getAllNotice();
 }

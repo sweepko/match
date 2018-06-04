@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sweep.dao.MatchMapper">
+  <!--<resultMap id="BaseResultMap" type="com.sweep.pojo.Match">-->
+    <!--<constructor>-->
+      <!--<idArg column="matchid" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="matchname" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="matchtype" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="matchdetails" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="createdate" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="startdate" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="enddate" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="sponsor" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="address" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="judges" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="enters" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="instruction" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="maxenters" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="officialphone" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--</constructor>-->
+  <!--</resultMap>-->
+
+  <resultMap id="entersmatch" type="com.sweep.pojo.MyMatch">
+    <result property="id" column="entersid"></result>
+    <association property="enters" javaType="com.sweep.pojo.Enters">
+      <id property="userid" column="userid"/>
+      <result property="matchid" column="matchid"/>
+      <result property="entersid" column="entersid"/>
+      <result property="score" column="score"/>
+      <result property="describes" column="describes"/>
+      <result property="state" column="state"/>
+    </association>
+    <association property="match" javaType="com.sweep.pojo.Match">
+      <id property="matchid" column="matchid"/>
+      <result property="matchname" column="matchname"/>
+      <result property="matchtype" column="matchtype"/>
+      <result property="enters" column="enters"/>
+      <result property="startdate" column="startdate"></result>
+      <result property="matchimage" column="matchimage"></result>
+      <result property="sponsor" column="sponsor"></result>
+    </association>
+  </resultMap>
+  <sql id="Base_Column_List">
+    matchid, matchname, matchtype, matchdetails, createdate, startdate, enddate, sponsor, 
+    address, judges, enters, instruction, maxenters, officialphone,matchimage
+  </sql>
+  <!--<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+    <!--select -->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from match-->
+    <!--where matchid = #{matchid,jdbcType=INTEGER}-->
+  <!--</select>-->
+  <!--<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+    <!--delete from match-->
+    <!--where matchid = #{matchid,jdbcType=INTEGER}-->
+  <!--</delete>-->
+  <!--<insert id="insert" parameterType="com.sweep.pojo.Match">-->
+    <!--insert into match (matchid, matchname, matchtype, -->
+      <!--matchdetails, createdate, startdate, -->
+      <!--enddate, sponsor, address, -->
+      <!--judges, enters, instruction, -->
+      <!--maxenters, officialphone)-->
+    <!--values (#{matchid,jdbcType=INTEGER}, #{matchname,jdbcType=VARCHAR}, #{matchtype,jdbcType=VARCHAR}, -->
+      <!--#{matchdetails,jdbcType=VARCHAR}, #{createdate,jdbcType=VARCHAR}, #{startdate,jdbcType=VARCHAR}, -->
+      <!--#{enddate,jdbcType=VARCHAR}, #{sponsor,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, -->
+      <!--#{judges,jdbcType=VARCHAR}, #{enters,jdbcType=VARCHAR}, #{instruction,jdbcType=VARCHAR}, -->
+      <!--#{maxenters,jdbcType=INTEGER}, #{officialphone,jdbcType=VARCHAR})-->
+  <!--</insert>-->
+  <insert id="insertSelective" parameterType="com.sweep.pojo.Match">
+    insert into matches
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="matchid != null">
+        matchid,
+      </if>
+      <if test="matchname != null">
+        matchname,
+      </if>
+      <if test="matchtype != null">
+        matchtype,
+      </if>
+      <if test="matchdetails != null">
+        matchdetails,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="startdate != null">
+        startdate,
+      </if>
+      <if test="enddate != null">
+        enddate,
+      </if>
+      <if test="sponsor != null">
+        sponsor,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="judges != null">
+        judges,
+      </if>
+      <if test="instruction != null">
+      instruction,
+    </if>
+      <if test="maxenters != null">
+        maxenters,
+      </if>
+      <if test="enters != null">
+        enters,
+      </if>
+      <if test="officialphone != null">
+        officialphone,
+      </if>
+      <if test="matchimage != null">
+        matchimage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="matchid != null">
+        #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="matchname != null">
+        #{matchname,jdbcType=VARCHAR},
+      </if>
+      <if test="matchtype != null">
+        #{matchtype,jdbcType=VARCHAR},
+      </if>
+      <if test="matchdetails != null">
+        #{matchdetails,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        #{startdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null">
+        #{enddate,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null">
+        #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="judges != null">
+        #{judges,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="maxenters != null">
+        #{maxenters,jdbcType=INTEGER},
+      </if>
+      <if test="enters != null">
+        #{enters,jdbcType=VARCHAR},
+      </if>
+      <if test="officialphone != null">
+        #{officialphone,jdbcType=VARCHAR},
+      </if>
+      <if test="matchimage != null">
+        #{matchimage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <!--<update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Match">-->
+    <!--update match-->
+    <!--<set>-->
+      <!--<if test="matchname != null">-->
+        <!--matchname = #{matchname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="matchtype != null">-->
+        <!--matchtype = #{matchtype,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="matchdetails != null">-->
+        <!--matchdetails = #{matchdetails,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="createdate != null">-->
+        <!--createdate = #{createdate,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="startdate != null">-->
+        <!--startdate = #{startdate,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="enddate != null">-->
+        <!--enddate = #{enddate,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="sponsor != null">-->
+        <!--sponsor = #{sponsor,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="address != null">-->
+        <!--address = #{address,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="judges != null">-->
+        <!--judges = #{judges,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="enters != null">-->
+        <!--enters = #{enters,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="instruction != null">-->
+        <!--instruction = #{instruction,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="maxenters != null">-->
+        <!--maxenters = #{maxenters,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="officialphone != null">-->
+        <!--officialphone = #{officialphone,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--where matchid = #{matchid,jdbcType=INTEGER}-->
+  <!--</update>-->
+  <!--<update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Match">-->
+    <!--update match-->
+    <!--set matchname = #{matchname,jdbcType=VARCHAR},-->
+      <!--matchtype = #{matchtype,jdbcType=VARCHAR},-->
+      <!--matchdetails = #{matchdetails,jdbcType=VARCHAR},-->
+      <!--createdate = #{createdate,jdbcType=VARCHAR},-->
+      <!--startdate = #{startdate,jdbcType=VARCHAR},-->
+      <!--enddate = #{enddate,jdbcType=VARCHAR},-->
+      <!--sponsor = #{sponsor,jdbcType=VARCHAR},-->
+      <!--address = #{address,jdbcType=VARCHAR},-->
+      <!--judges = #{judges,jdbcType=VARCHAR},-->
+      <!--enters = #{enters,jdbcType=VARCHAR},-->
+      <!--instruction = #{instruction,jdbcType=VARCHAR},-->
+      <!--maxenters = #{maxenters,jdbcType=INTEGER},-->
+      <!--officialphone = #{officialphone,jdbcType=VARCHAR}-->
+    <!--where matchid = #{matchid,jdbcType=INTEGER}-->
+  <!--</update>-->
+  <!--<resultMap id="BaseResultMap" type="com.sweep.pojo.Match">-->
+    <!--<constructor>-->
+      <!--<idArg column="matchid" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="matchname" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="matchtype" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="matchdetails" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="createdate" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="startdate" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="enddate" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="sponsor" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="address" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="judges" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="enters" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="instruction" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+      <!--<arg column="maxenters" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+      <!--<arg column="officialphone" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--</constructor>-->
+  <!--</resultMap>-->
+  <!--<sql id="Base_Column_List">-->
+    <!--matchid, matchname, matchtype, matchdetails, createdate, startdate, enddate, sponsor, -->
+    <!--address, judges, enters, instruction, maxenters, officialphone-->
+  <!--</sql>-->
+  <select id="selectAllMatch" resultType="com.sweep.pojo.Match">
+    SELECT <include refid="Base_Column_List"></include>
+    from MATCHES
+  </select>
+  <select id="selectMatchByUserid" parameterType="java.lang.Integer" resultMap="entersmatch">
+    SELECT q.*,m.* from (select a.* from match_enters a where userid=#{userid} and a.state=1 AND a.score is not null and a.describes is not null) q,matches m where m.matchid=q.matchid and m.enddate &lt; NOW() ORDER BY m.enddate DESC;
+  </select>
+  <select id="selectMatchByKey" parameterType="java.lang.String" resultType="com.sweep.pojo.Match">
+    SELECT <include refid="Base_Column_List"></include>
+    from MATCHES WHERE matchtype LIKE concat(concat('%',#{keyword}),'%')
+    or matchname LIKE concat(concat('%',#{keyword}),'%')
+    or matchdetails LIKE concat(concat('%',#{keyword}),'%')
+    or sponsor LIKE concat(concat('%',#{keyword}),'%')
+    or address LIKE concat(concat('%',#{keyword}),'%')
+    or instruction LIKE concat(concat('%',#{keyword}),'%')
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultType="com.sweep.pojo.Match">
+    select
+    <include refid="Base_Column_List" />
+    from matches
+    where matchid = #{matchid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKeys">
+    delete from matches
+    where matchid in (${idss})
+  </delete>
+  <!--<insert id="insert" parameterType="com.sweep.pojo.Match">-->
+    <!--insert into match (matchid, matchname, matchtype, -->
+      <!--matchdetails, createdate, startdate, -->
+      <!--enddate, sponsor, address, -->
+      <!--judges, enters, instruction, -->
+      <!--maxenters, officialphone)-->
+    <!--values (#{matchid,jdbcType=INTEGER}, #{matchname,jdbcType=VARCHAR}, #{matchtype,jdbcType=VARCHAR}, -->
+      <!--#{matchdetails,jdbcType=VARCHAR}, #{createdate,jdbcType=VARCHAR}, #{startdate,jdbcType=VARCHAR}, -->
+      <!--#{enddate,jdbcType=VARCHAR}, #{sponsor,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, -->
+      <!--#{judges,jdbcType=VARCHAR}, #{enters,jdbcType=VARCHAR}, #{instruction,jdbcType=VARCHAR}, -->
+      <!--#{maxenters,jdbcType=INTEGER}, #{officialphone,jdbcType=VARCHAR})-->
+  <!--</insert>-->
+  <!--<insert id="insertSelective" parameterType="com.sweep.pojo.Match">-->
+    <!--insert into match-->
+    <!--<trim prefix="(" suffix=")" suffixOverrides=",">-->
+      <!--<if test="matchid != null">-->
+        <!--matchid,-->
+      <!--</if>-->
+      <!--<if test="matchname != null">-->
+        <!--matchname,-->
+      <!--</if>-->
+      <!--<if test="matchtype != null">-->
+        <!--matchtype,-->
+      <!--</if>-->
+      <!--<if test="matchdetails != null">-->
+        <!--matchdetails,-->
+      <!--</if>-->
+      <!--<if test="createdate != null">-->
+        <!--createdate,-->
+      <!--</if>-->
+      <!--<if test="startdate != null">-->
+        <!--startdate,-->
+      <!--</if>-->
+      <!--<if test="enddate != null">-->
+        <!--enddate,-->
+      <!--</if>-->
+      <!--<if test="sponsor != null">-->
+        <!--sponsor,-->
+      <!--</if>-->
+      <!--<if test="address != null">-->
+        <!--address,-->
+      <!--</if>-->
+      <!--<if test="judges != null">-->
+        <!--judges,-->
+      <!--</if>-->
+      <!--<if test="enters != null">-->
+        <!--enters,-->
+      <!--</if>-->
+      <!--<if test="instruction != null">-->
+        <!--instruction,-->
+      <!--</if>-->
+      <!--<if test="maxenters != null">-->
+        <!--maxenters,-->
+      <!--</if>-->
+      <!--<if test="officialphone != null">-->
+        <!--officialphone,-->
+      <!--</if>-->
+    <!--</trim>-->
+    <!--<trim prefix="values (" suffix=")" suffixOverrides=",">-->
+      <!--<if test="matchid != null">-->
+        <!--#{matchid,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="matchname != null">-->
+        <!--#{matchname,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="matchtype != null">-->
+        <!--#{matchtype,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="matchdetails != null">-->
+        <!--#{matchdetails,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="createdate != null">-->
+        <!--#{createdate,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="startdate != null">-->
+        <!--#{startdate,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="enddate != null">-->
+        <!--#{enddate,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="sponsor != null">-->
+        <!--#{sponsor,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="address != null">-->
+        <!--#{address,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="judges != null">-->
+        <!--#{judges,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="enters != null">-->
+        <!--#{enters,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="instruction != null">-->
+        <!--#{instruction,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="maxenters != null">-->
+        <!--#{maxenters,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="officialphone != null">-->
+        <!--#{officialphone,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</trim>-->
+  <!--</insert>-->
+  <update id="updateByPrimaryKeySelective" parameterType="com.sweep.pojo.Match">
+    update matches
+    <set>
+      <if test="matchname != null">
+        matchname = #{matchname,jdbcType=VARCHAR},
+      </if>
+      <if test="matchtype != null">
+        matchtype = #{matchtype,jdbcType=VARCHAR},
+      </if>
+      <if test="matchdetails != null">
+        matchdetails = #{matchdetails,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=VARCHAR},
+      </if>
+      <if test="startdate != null">
+        startdate = #{startdate,jdbcType=VARCHAR},
+      </if>
+      <if test="enddate != null">
+        enddate = #{enddate,jdbcType=VARCHAR},
+      </if>
+      <if test="sponsor != null">
+        sponsor = #{sponsor,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="judges != null">
+        judges = #{judges,jdbcType=VARCHAR},
+      </if>
+      <if test="enters != null">
+        enters = #{enters,jdbcType=VARCHAR},
+      </if>
+      <if test="instruction != null">
+        instruction = #{instruction,jdbcType=VARCHAR},
+      </if>
+      <if test="maxenters != null">
+        maxenters = #{maxenters,jdbcType=INTEGER},
+      </if>
+      <if test="officialphone != null">
+        officialphone = #{officialphone,jdbcType=VARCHAR},
+      </if>
+      <if test="matchimage != null">
+        matchimage = #{matchimage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where matchid = #{matchid,jdbcType=INTEGER}
+  </update>
+  <!--<update id="updateByPrimaryKey" parameterType="com.sweep.pojo.Match">-->
+    <!--update match-->
+    <!--set matchname = #{matchname,jdbcType=VARCHAR},-->
+      <!--matchtype = #{matchtype,jdbcType=VARCHAR},-->
+      <!--matchdetails = #{matchdetails,jdbcType=VARCHAR},-->
+      <!--createdate = #{createdate,jdbcType=VARCHAR},-->
+      <!--startdate = #{startdate,jdbcType=VARCHAR},-->
+      <!--enddate = #{enddate,jdbcType=VARCHAR},-->
+      <!--sponsor = #{sponsor,jdbcType=VARCHAR},-->
+      <!--address = #{address,jdbcType=VARCHAR},-->
+      <!--judges = #{judges,jdbcType=VARCHAR},-->
+      <!--enters = #{enters,jdbcType=VARCHAR},-->
+      <!--instruction = #{instruction,jdbcType=VARCHAR},-->
+      <!--maxenters = #{maxenters,jdbcType=INTEGER},-->
+      <!--officialphone = #{officialphone,jdbcType=VARCHAR}-->
+    <!--where matchid = #{matchid,jdbcType=INTEGER}-->
+  <!--</update>-->
+</mapper>

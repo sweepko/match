@@ -41,4 +41,9 @@ public class NoticeServiceImpl implements NoticeService{
     public boolean updateNotice(Notice notice) {
         return noticeMapper.updateByPrimaryKeySelective(notice)>0;
     }
+
+    @Override
+    public List<Notice> getAllNotice() {
+        return noticeMapper.selectAllNotice();
+    }
 }
